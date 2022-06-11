@@ -8,7 +8,10 @@ defmodule WC do
     this function get the filename from arg and compute the wc
   """
   def main do
-    System.argv() |> hd |> String.trim() |> main()
+    System.argv()
+    |> hd
+    |> String.trim()
+    |> main()
   end
 
   @doc """
@@ -21,9 +24,20 @@ defmodule WC do
   def main(filename) do
     content = File.read!(filename)
 
-    rows = content |> String.graphemes() |> Enum.count(&(&1 == "\n"))
-    words = content |> String.split(~r{\n|\s+}) |> Enum.filter(&(&1 != "")) |> Enum.count()
-    chars = content |> String.length()
+    rows =
+      content
+      |> String.graphemes()
+      |> Enum.count(&(&1 == "\n"))
+
+    words =
+      content
+      |> String.split(~r{\n|\s+})
+      |> Enum.filter(&(&1 != ""))
+      |> Enum.count()
+
+    chars =
+      content
+      |> String.length()
 
     IO.puts("  #{rows} #{words} #{chars} #{filename}")
   end
