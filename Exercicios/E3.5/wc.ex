@@ -7,11 +7,11 @@ defmodule WC do
   @doc """
     this function get the filename from arg and compute the wc
   """
-  def main do
+  def start do
     System.argv()
     |> hd
     |> String.trim()
-    |> main()
+    |> start()
   end
 
   @doc """
@@ -21,7 +21,7 @@ defmodule WC do
 
     this function count the rows, words and chars from an file
   """
-  def main(filename) do
+  def start(filename) do
     content = File.read!(filename)
 
     rows =
@@ -39,8 +39,8 @@ defmodule WC do
       content
       |> String.length()
 
-    IO.puts("  #{rows} #{words} #{chars} #{filename}")
+    "  #{rows} #{words} #{chars} #{filename}"
   end
 end
 
-WC.main()
+# WC.start()
