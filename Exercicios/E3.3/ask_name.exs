@@ -9,6 +9,6 @@ defmodule AskNameTest do
   end
 
   test "wrong answer for renato name" do
-    assert WC.start("../../aulas.md") == :ok
+    assert AskName.answer("renato") == :ok
   end
 end
